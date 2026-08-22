@@ -62,9 +62,7 @@ function AddRecipeForm({ onClose }) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Title
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
         <input
           name="title"
           value={form.title}
@@ -76,9 +74,7 @@ function AddRecipeForm({ onClose }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Description
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
         <textarea
           name="description"
           value={form.description}
@@ -90,9 +86,7 @@ function AddRecipeForm({ onClose }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Ingredients
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Ingredients</label>
         <div className="flex gap-2 mb-2">
           <input
             value={ingredientInput}
@@ -129,9 +123,7 @@ function AddRecipeForm({ onClose }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Instructions
-        </label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Instructions</label>
         <textarea
           name="instructions"
           value={form.instructions}
@@ -143,4 +135,78 @@ function AddRecipeForm({ onClose }) {
         {errors.instructions && <p className="text-red-500 text-xs mt-1">{errors.instructions}</p>}
       </div>
 
-      <div className="grid
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Prep Time (min)</label>
+          <input
+            name="prepTime"
+            type="number"
+            value={form.prepTime}
+            onChange={handleChange}
+            placeholder="0"
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Cook Time (min)</label>
+          <input
+            name="cookTime"
+            type="number"
+            value={form.cookTime}
+            onChange={handleChange}
+            placeholder="0"
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Servings</label>
+          <input
+            name="servings"
+            type="number"
+            value={form.servings}
+            onChange={handleChange}
+            placeholder="1"
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+          <select
+            name="category"
+            value={form.category}
+            onChange={handleChange}
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+          >
+            <option value="">Select category</option>
+            {CATEGORIES.map((c) => (
+              <option key={c} value={c}>{c}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
+        <input
+          name="image"
+          value={form.image}
+          onChange={handleChange}
+          placeholder="https://..."
+          className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="bg-rose-600 text-white py-2 rounded-lg font-medium hover:bg-rose-700"
+      >
+        Add Recipe
+      </button>
+    </form>
+  )
+}
+
+export default AddRecipeForm
