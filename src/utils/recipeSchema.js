@@ -1,0 +1,36 @@
+export const createRecipe = ({
+  title = '',
+  description = '',
+  ingredients = [],
+  instructions = '',
+  category = '',
+  prepTime = 0,
+  cookTime = 0,
+  servings = 1,
+  image = '',
+  isFavorite = false,
+  dateAdded = new Date().toISOString(),
+} = {}) => ({
+  id: Date.now(),
+  title,
+  description,
+  ingredients,
+  instructions,
+  category,
+  prepTime,
+  cookTime,
+  servings,
+  image,
+  isFavorite,
+  dateAdded,
+})
+
+export const CATEGORIES = [
+  'Breakfast',
+  'Lunch',
+  'Dinner',
+  'Snack',
+  'Dessert',
+  'Drinks',
+  'Other',
+]
