@@ -3,6 +3,7 @@ import { useRecipes } from '../context/RecipeContext'
 import RecipeList from '../components/RecipeList'
 import AddRecipeForm from '../components/AddRecipeForm'
 import { CATEGORIES } from '../utils/recipeSchema'
+import RecipeDetail from '../components/RecipeDetail'
 
 function Recipes() {
   const { recipes } = useRecipes()
@@ -72,6 +73,12 @@ function Recipes() {
         recipes={filteredRecipes}
         onSelect={setSelectedRecipe}
       />
+      {selectedRecipe && (
+        <RecipeDetail
+          recipe={selectedRecipe}
+          onClose={() => setSelectedRecipe(null)}
+        />
+      )}
     </div>
   )
 }
